@@ -1,6 +1,8 @@
 import streamlit as st
 from streamlit_autorefresh import st_autorefresh
 from supabase import create_client
+import pandas as pd
+from io import BytesIO
 
 SUPABASE_URL = "https://gypxqraeewtafxhzlpht.supabase.co"
 SUPABASE_KEY = "sb_publishable_IKOTWRfZpboaZVQwTBj6mw_WY79VMYx"
