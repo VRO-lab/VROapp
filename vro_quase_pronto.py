@@ -408,7 +408,7 @@ def show_card(idea, idx, vote_count=0, selected=False, top_pos=None):
 <div>{badge_html}</div>
 <div><span class="card-chip">{vote_count} voto(s)</span></div>
 </div>
-<div class="card-title">Ideia {idea_id}</div>
+<div class="card-title">Ideia {idx + 1}</div>
 <div class="section-label">1 - Problema Inicial</div>
 <div class="section-text">{problema}</div>
 <div class="section-label">2 - Impactados pelo problema</div>
