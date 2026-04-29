@@ -569,13 +569,13 @@ with tab3:
                 "Resultado/Impacto Monetizado": idea.get("monetizado", ""),
                 "Votos": vote_counts.get(idea_id, 0)
             })
-        
+
         df_excel = pd.DataFrame(dados_excel)
-        
+
         buffer = BytesIO()
         with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
             df_excel.to_excel(writer, index=False, sheet_name="Ideias VRO")
-        
+
         st.download_button(
             label="Baixar ideias em Excel",
             data=buffer.getvalue(),
@@ -583,7 +583,7 @@ with tab3:
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
             use_container_width=True
         )
-    
+
     if not ideias:
         st.info("Ainda não há ideias cadastradas.")
     elif not vote_counts:
@@ -595,7 +595,9 @@ with tab3:
             '<h3 style="color:#0f172a; font-weight:800; margin-bottom:10px;">Ideias em destaque</h3>',
             unsafe_allow_html=True
         )
-        
+
+        cols = st.columns(3)
+
         for idx, (idea_id, votos) in enumerate(ranking[:3], start=1):
             idea = next((i for i in ideias if i["id"] == idea_id), None)
             if idea:
@@ -607,7 +609,7 @@ with tab3:
                         selected=False,
                         top_pos=idx
                     )
-        
+
         st.markdown(
             '<h3 style="color:#0f172a; font-weight:800;">Ranking</h3>',
             unsafe_allow_html=True
@@ -624,7 +626,10 @@ with tab3:
 
 
 with tab4:
-    st.markdown("### Modo Projetar")
+    st.markdown(
+        '<h3 style="color:#0f172a; font-weight:800;">Modo Projetar</h3>',
+        unsafe_allow_html=True
+    )
 
     ideias = get_ideas()
     vote_counts = get_vote_counts()
