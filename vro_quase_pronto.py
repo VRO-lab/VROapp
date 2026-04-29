@@ -166,6 +166,10 @@ footer {visibility: hidden;}
     padding-right: 1rem !important;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    color: #0f172a !important;
+}
+
 .hero {
     background: #f4f7fb;
     padding: 18px 8px 8px 8px;
