@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_autorefresh import st_autorefresh
 from supabase import create_client
 
-SUPABASE_URL = "https://gypxqraeewtafxhzlpht.supabase.co/rest/v1/"
+SUPABASE_URL = "https://gypxqraeewtafxhzlpht.supabase.co"
 SUPABASE_KEY = "sb_publishable_IKOTWRfZpboaZVQwTBj6mw_WY79VMYx"
 
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
