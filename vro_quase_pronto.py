@@ -555,8 +555,10 @@ with tab3:
     else:
         ranking = sorted(vote_counts.items(), key=lambda x: x[1], reverse=True)
 
-        st.markdown("### Ideias em destaque")
-        cols = st.columns(3)
+    st.markdown(
+        '<h3 style="color:#0f172a; font-weight:800; margin-bottom:10px;">Ideias em destaque</h3>',
+        unsafe_allow_html=True
+    )
 
         for idx, (idea_id, votos) in enumerate(ranking[:3], start=1):
             idea = next((i for i in ideias if i["id"] == idea_id), None)
