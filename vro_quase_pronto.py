@@ -294,10 +294,9 @@ label, .stTextInput label, .stTextArea label {
     -webkit-text-fill-color: #ffffff !important;
 }
 
-.stButton > button:disabled {
-    background-color: #cbd5e1 !important;
-    color: #0f172a !important;
-    -webkit-text-fill-color: #0f172a !important;
+.stButton > button * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 
 div[data-testid="stCheckbox"] label,
