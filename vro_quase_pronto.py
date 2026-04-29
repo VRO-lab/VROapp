@@ -554,6 +554,36 @@ with tab3:
     ideias = get_ideas()
     vote_counts = get_vote_counts()
 
+    if ideias:
+    dados_excel = []
+
+    for idea in ideias:
+        idea_id = idea["id"]
+        dados_excel.append({
+            "Evento": idea.get("evento", ""),
+            "ID da ideia": idea_id,
+            "Autor": idea.get("autor", ""),
+            "Problema Inicial": idea.get("problema", ""),
+            "Impactados pelo problema": idea.get("impacto", ""),
+            "Hipótese de Solução": idea.get("solucao", ""),
+            "Resultado/Impacto Monetizado": idea.get("monetizado", ""),
+            "Votos": vote_counts.get(idea_id, 0)
+        })
+
+    df_excel = pd.DataFrame(dados_excel)
+
+    buffer = BytesIO()
+    with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
+        df_excel.to_excel(writer, index=False, sheet_name="Ideias VRO")
+
+    st.download_button(
+        label="Baixar ideias em Excel",
+        data=buffer.getvalue(),
+        file_name=f"ideias_vro_{st.session_state.evento}.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        use_container_width=True
+    )
+    
     if not ideias:
         st.info("Ainda não há ideias cadastradas.")
     elif not vote_counts:
